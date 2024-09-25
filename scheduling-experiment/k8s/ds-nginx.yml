@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: ds-nginx
+spec:
+  selector:
+    matchLabels:
+      app: ds-nginx
+  template:
+    metadata:
+      labels:
+        app: ds-nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+      tolerations:
+        - key: "env"
+          operator: "Equal"
+          value: "production"
+          effect: "NoExecute"
+        - key: "disktype"
+          operator: "Equal"
+          value: "ssd"
+          effect: "NoSchedule"

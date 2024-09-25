@@ -6,11 +6,11 @@
 
 ### `podinfo-type-1`
 
-This deployment have toleration to `disktype=ssd:NoSchedule` and `controlnode=true:NoExecution`, node selector of `disktype=ssd`, and pod affinity of `preferredDuringSchedulingIgnoredDuringExecution` to its kind.
+This deployment has a toleration for `disktype=ssd:NoSchedule` and `controlnode=true:NoExecution`, a node selector of `disktype=ssd`, and a pod affinity of `preferredDuringSchedulingIgnoredDuringExecution` to its kind.
 
 ### `podinfo-type-2`
 
-This deployment have toleration to `disktype=ssd:NoSchedule` and `env=production:NoExecution`, and pod anti-affinity of `preferredDuringSchedulingIgnoredDuringExecution` to its kind.
+This deployment has a toleration for `disktype=ssd:NoSchedule` and `env=production:NoExecution`, and a pod anti-affinity of `preferredDuringSchedulingIgnoredDuringExecution` to its kind.
 
 ## Nodes
 

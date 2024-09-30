@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: busybox-server-type-1
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: busybox-server-type-1
+  template:
+    metadata:
+      labels:
+        app: busybox-server-type-1
+    spec:
+      containers:
+        - name: busybox
+          image: busybox
+          ports:
+            - containerPort: 8080
+          env:
+            - name: Type
+              value: 1
+          command:
+            - "sh"
+            - "-c"
+            - |
+                while true; do
+                  {
+                    BODY="Current time: $(date)\n\nEnvironment Variables:\n$(printenv)\n";
+                    echo -ne "HTTP/1.1 200 OK\r\nContent-Length: $(echo -ne "$BODY" | wc -c)\r\n\r\n$BODY";
+                  } | nc -l -p 8080;
+                done
+      restartPolicy: Always

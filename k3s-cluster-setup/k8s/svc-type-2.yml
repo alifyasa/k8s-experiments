@@ -7,6 +7,6 @@ spec:
     app: busybox-server-type-2
   ports:
     - protocol: TCP
-      port: 80      
+      port: 8082
       targetPort: 8080  
-  type: LoadBalancer
+  type: NodePort

@@ -15,7 +15,7 @@ spec:
           service:
             name: busybox-server-type-1
             port:
-              number: 80
+              number: 8081
   - host: b.example.com
     http:
       paths:
@@ -23,6 +23,6 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: busybox-server-type-1
+            name: busybox-server-type-2
             port:
-              number: 80
+              number: 8082

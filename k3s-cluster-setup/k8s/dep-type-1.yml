@@ -15,11 +15,15 @@ spec:
       containers:
         - name: busybox
           image: busybox
+          resources:
+            limits:
+              cpu: 250m
+              memory: 500m
           ports:
             - containerPort: 8080
           env:
-            - name: Type
-              value: 1
+          - name: Type
+            value: "1"
           command:
             - "sh"
             - "-c"

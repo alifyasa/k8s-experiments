@@ -3,14 +3,13 @@ kind: PersistentVolume
 metadata:
   name: control-panel-pv
 spec:
+  accessModes:
+    - ReadWriteMany
   capacity:
     storage: 1Gi
-  volumeMode: Filesystem
-  accessModes:
-    - ReadWriteOnce
-  persistentVolumeReclaimPolicy: Delete
   hostPath:
     path: /tmp/data
+    type: ""
   nodeAffinity:
     required:
       nodeSelectorTerms:
@@ -18,4 +17,6 @@ spec:
             - key: kubernetes.io/hostname
               operator: In
               values:
-              - vm-development-1
+                - vm-development-1
+  persistentVolumeReclaimPolicy: Delete
+  volumeMode: Filesystem

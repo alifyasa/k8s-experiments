@@ -64,3 +64,27 @@ NAME         STATUS   ROLES                  AGE   VERSION
 k3s-node     Ready    control-plane,master   10m   v1.30.5+k3s1
 k3s-node-2   Ready    <none>                 5s    v1.30.5+k3s1
 ```
+
+## High Availability Cluster
+
+Taken from https://docs.k3s.io/datastore/ha-embedded.
+
+### Initialize Cluster
+
+```
+curl -sfL https://get.k3s.io | K3S_TOKEN=SECRET sh -s - server \
+    --cluster-init
+```
+
+### Join as Server (Master)
+
+```
+curl -sfL https://get.k3s.io | K3S_TOKEN=SECRET sh -s - server \
+    --server https://<ip or hostname of server1>:6443
+```
+
+### Join as Agent (Worker)
+
+```
+curl -sfL https://get.k3s.io | K3S_TOKEN=SECRET sh -s - agent --server https://<ip or hostname of server>:6443
+```

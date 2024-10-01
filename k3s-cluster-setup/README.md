@@ -1,17 +1,19 @@
 # k3s Cluster Setup
 
-## Requirements
+## Local Setup Using VirtualBox and Alpine Linux
+
+### Requirements
 
  1. VirtualBox
  2. [Alpine ISO](https://alpinelinux.org/downloads/). Download the virtual ISO.
 
-## Step 1: VM Creation
+### Step 1: VM Creation
 
 Based on [k3s requirements](https://docs.k3s.io/installation/requirements#hardware), the minimum recommended hardware is 2 CPU cores and 1 GB of RAM.
 
 Also set the network settings to "Adapted to Bridge" to enable ssh from host terminal.
 
-## Alpine Installation
+### Alpine Installation
 
  1. Do `setup-alpine` and follow the instructions.
  2. Reboot.
@@ -20,11 +22,11 @@ Also set the network settings to "Adapted to Bridge" to enable ssh from host ter
  5. Power off.
  6. Clone the VMs.
 
-## k3s Setup
+### k3s Setup
 
 Before doing this, escalate to root.
 
-### Main Node
+#### Main Node
 
 Install k3s.
 
@@ -44,7 +46,7 @@ Also get the ip address
 ifconfig
 ```
 
-### Worker Node
+#### Worker Node
 
 Install k3s, but specify `K3S_URL=https://<main-node-ip>:6443`, `K3S_TOKEN=<node-token>`, and `K3S_NODE_NAME=<unique-node-name>`
 
@@ -52,7 +54,7 @@ Install k3s, but specify `K3S_URL=https://<main-node-ip>:6443`, `K3S_TOKEN=<node
 curl -sfL https://get.k3s.io | K3S_URL=https://<main-node-ip>:6443 K3S_TOKEN=<main-node-token> K3S_NODE_NAME=<unique-node-name> sh -
 ```
 
-## Checking Installation
+### Checking Installation
 
 ssh to main node and check all nodes.
 

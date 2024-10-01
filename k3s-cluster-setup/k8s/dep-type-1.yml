@@ -34,11 +34,5 @@ spec:
                     echo -ne "HTTP/1.1 200 OK\r\nContent-Length: $(echo -ne "$BODY" | wc -c)\r\n\r\n$BODY";
                   } | nc -l -p 8080;
                 done
-          volumeMounts:
-            - name: data-volume
-              mountPath: /tmp/data
       restartPolicy: Always
-      volumes:
-        - name: data-volume
-          persistentVolumeClaim:
-            claimName: block-pvc
+

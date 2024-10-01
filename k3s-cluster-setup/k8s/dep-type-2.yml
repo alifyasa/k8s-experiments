@@ -12,6 +12,8 @@ spec:
       labels:
         app: busybox-server-type-2
     spec:
+      nodeSelector:
+        kubernetes.io/hostname: vm-development-2
       containers:
         - name: busybox
           image: busybox

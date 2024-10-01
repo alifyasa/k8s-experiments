@@ -34,9 +34,9 @@ spec:
                     echo -ne "HTTP/1.1 200 OK\r\nContent-Length: $(echo -ne "$BODY" | wc -c)\r\n\r\n$BODY";
                   } | nc -l -p 8080;
                 done
-      volumeMounts:
-        - mountPath: "/tmp/data"
-          name: local-storage
+          volumeMounts:
+            - mountPath: "/tmp/data"
+              name: local-storage
       restartPolicy: Always
       volumes:
       - name: local-storage

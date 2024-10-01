@@ -8,6 +8,3 @@ spec:
   resources:
     requests:
       storage: 100Mi
-  selector:
-    matchLabels:
-      kubernetes.io/hostname: vm-development-1

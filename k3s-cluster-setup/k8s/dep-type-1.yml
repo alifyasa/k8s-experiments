@@ -22,8 +22,8 @@ spec:
           ports:
             - containerPort: 8080
           env:
-          - name: Type
-            value: "1"
+            - name: Type
+              value: "1"
           command:
             - "sh"
             - "-c"
@@ -34,4 +34,11 @@ spec:
                     echo -ne "HTTP/1.1 200 OK\r\nContent-Length: $(echo -ne "$BODY" | wc -c)\r\n\r\n$BODY";
                   } | nc -l -p 8080;
                 done
+          volumeMounts:
+            - name: data-volume
+              mountPath: /tmp/data
       restartPolicy: Always
+      volumes:
+        - name: data-volume
+          persistentVolumeClaim:
+            claimName: control-panel-pvc

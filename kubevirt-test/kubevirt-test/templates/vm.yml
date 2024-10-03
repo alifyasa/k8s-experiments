@@ -13,10 +13,9 @@ spec:
       domain:
         devices:
           disks:
-            - name: rootdisk
+            - name: rootvolume
               disk:
                 bus: virtio
-              volumeName: rootvolume
         resources:
           requests:
             memory: 2Gi

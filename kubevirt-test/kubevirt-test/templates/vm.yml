@@ -1,0 +1,26 @@
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  name: kubevirt-vm-test
+  namespace: default
+spec:
+  running: false
+  template:
+    metadata:
+      labels:
+        kubevirt.io/domain: kubevirt-vm-test
+    spec:
+      domain:
+        devices:
+          disks:
+            - name: rootdisk
+              disk:
+                bus: virtio
+              volumeName: rootvolume
+        resources:
+          requests:
+            memory: 2Gi
+      volumes:
+        - name: rootvolume
+          persistentVolumeClaim:
+            claimName: kubevirt-pvc-15gib
